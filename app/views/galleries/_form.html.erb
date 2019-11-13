@@ -1,0 +1,30 @@
+<%= form_with(model: gallery, local: true) do |form| %>
+  <% if gallery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
+
+      <ul>
+        <% gallery.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+
+
+  <h2>Gallery Photo</h2>
+  <%= form.fields_for :photo do |sub_form| %>
+    <div>
+      <%=sub_form.hidden_field :image, value: sub_form.object.cached_image_data%>
+      <%=sub_form.file_field :image %>
+      <%=sub_form.check_box :_destroy unless sub_form.object.new_record? %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
