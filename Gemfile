@@ -56,5 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem 'mongoid', '~> 7.0'
-gem 'shrine', '~> 3.0.1'
+gem 'shrine', '~> 3.3.0'
 gem 'shrine-mongoid'
